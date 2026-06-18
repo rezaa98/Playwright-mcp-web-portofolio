@@ -1,7 +1,7 @@
 {
   "name": "playwright-agentic-ai-demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Agentic AI Testing framework integrating Playwright and Model Context Protocol (MCP) for autonomous E2E testing.",
   "main": "index.js",
   "scripts": {
     "test": "playwright test",

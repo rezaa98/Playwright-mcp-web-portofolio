@@ -53,6 +53,9 @@ test.describe('Agentic AI Testing Demo', () => {
     // 3. Instruct the Agent to verify success
     const isSuccess = await aiAgent.verifyAssertion(page, "Ensure the user is redirected to the dashboard and sees a welcome message");
     
+    // Capture screenshot of the process for README
+    await page.screenshot({ path: 'testing-process.png' });
+    
     expect(isSuccess).toBeTruthy();
     console.log('--- Test Completed Successfully ---');
   });
