@@ -1,30 +1,9 @@
 import { test, expect } from '@playwright/test';
+import { AgenticTestingClient } from '../src/agent';
+import * as dotenv from 'dotenv';
 
-/**
- * Mock representation of an MCP (Model Context Protocol) Agentic client.
- * In a real-world scenario, this would connect to an LLM or MCP Server 
- * (like Anthropic Claude or OpenAI) and pass the DOM context to it.
- */
-class AgenticTestingClient {
-  async analyzePageAndTakeAction(page: any, goal: string) {
-    console.log(`[Agent] Analyzing page state to achieve goal: "${goal}"`);
-    // Mocking an AI evaluating the DOM and interacting with elements.
-    if (goal.includes('login')) {
-      await page.waitForSelector('input[type="email"]');
-      await page.fill('input[type="email"]', 'agent@rezacode.cloud');
-      await page.fill('input[type="password"]', 'SecureAiP@ss123');
-      await page.click('button[type="submit"]');
-    }
-    return true;
-  }
-
-  async verifyAssertion(page: any, assertion: string) {
-    console.log(`[Agent] Verifying assertion: "${assertion}"`);
-    // Mocking an AI verifying visual or textual state
-    const content = await page.textContent('body');
-    return content.toLowerCase().includes('dashboard');
-  }
-}
+// Load environment variables from .env file if present
+dotenv.config();
 
 test.describe('Agentic AI Testing Demo', () => {
   test('Agent can autonomously navigate and login', async ({ page }) => {

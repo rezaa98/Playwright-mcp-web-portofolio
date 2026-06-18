@@ -39,6 +39,17 @@ cd Playwright-mcp-web-portofolio
 npm install
 ```
 
+### Enabling Real Agentic AI (Google Gemini)
+
+By default, if no API key is provided, the agent runs in **Mock Mode** so tests still pass in CI/CD without burning credits.
+
+To enable the real **Vision-based Sense-Think-Act loop**:
+1. Copy the example env file: `cp .env.example .env`
+2. Get an API key from [Google AI Studio](https://aistudio.google.com/).
+3. Add your key to `.env`: `GEMINI_API_KEY=your_key_here`
+
+When the key is present, the Agent will literally take screenshots of the Chromium browser, send them to Gemini 1.5 Flash, and ask the model to predict the CSS selectors and actions needed to achieve your goal autonomously!
+
 ### Running the Tests
 
 To run the agentic tests in headless mode:
